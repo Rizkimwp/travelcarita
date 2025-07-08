@@ -127,11 +127,11 @@ p a:hover::after
 }
 ::selection
 {
-	
+
 }
 p::selection
 {
-	
+
 }
 h1{font-size: 48px;}
 h2{font-size: 36px;}
@@ -145,14 +145,14 @@ h1, h2, h3, h4, h5, h6
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
-h1::selection, 
-h2::selection, 
-h3::selection, 
-h4::selection, 
-h5::selection, 
+h1::selection,
+h2::selection,
+h3::selection,
+h4::selection,
+h5::selection,
 h6::selection
 {
-	
+
 }
 .form-control
 {
@@ -942,7 +942,7 @@ section
 {
 	position: absolute;
 	bottom: 100%;
-	left: 15px;
+    left: 0px;
 	width: calc(100% - 30px);
 }
 .search_tabs
@@ -1462,7 +1462,7 @@ section
 }
 .offers_content
 {
-	
+
 }
 .offers_price
 {
@@ -1869,10 +1869,10 @@ section
 	font-size: 12px !important;
 	font-weight: 400 !important;
 	color: #FFFFFF !important;
-} 
+}
 .input_field:-ms-input-placeholder,
 .text_field:-ms-input-placeholder
-{ 
+{
 	font-size: 12px !important;
 	font-weight: 400 !important;
 	color: #FFFFFF !important;
@@ -2126,7 +2126,7 @@ section
 }
 .footer_nav
 {
-	
+
 }
 .footer_nav_list
 {

@@ -18,7 +18,7 @@
     @endif
 
     @if (session('error'))
-        <div class="alert alert-danger">
+        <div class="alert alert-danger" style="font-size: 1.1rem; padding: 1rem 1.25rem; font-weight: 500;">
             {{ session('error') }}
         </div>
     @endif

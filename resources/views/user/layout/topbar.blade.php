@@ -8,13 +8,12 @@
             <div class="row">
                 <div class="col main_nav_col d-flex align-items-center justify-content-start flex-row">
                     <div class="logo_container">
-                        <div class="logo"><a href="#"><img src="images/logo.png" alt="">travelix</a></div>
+                        <div class="logo"><a href="#">#carita trip</a></div>
                     </div>
                     <div class="main_nav_container d-flex align-items-center justify-content-between ml-auto">
                         <ul class="main_nav_list d-flex align-items-center mb-0">
-                            <li class="main_nav_item"><a href="#">beranda</a></li>
-                            <li class="main_nav_item"><a href="offers.html">penawaran</a></li>
-                            <li class="main_nav_item"><a href="blog.html">berita</a></li>
+                            <li class="main_nav_item"><a href="{{ route('home') }}">beranda</a></li>
+                            <li class="main_nav_item"><a href="{{ route('penawaran') }}">penawaran</a></li>
                             <li class="main_nav_item"><a href="contact.html">kontak</a></li>
                         </ul>
                     </div>
@@ -90,7 +89,10 @@
                                     </span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownCart">
-                                    <li><a class="dropdown-item" href="">Lihat Keranjang</a>
+                                    <li><a class="dropdown-item" href="">Lihat Keranjang <span
+                                                class="position-absolute start-100 translate-middle badge rounded-pill bg-danger top-0 text-white">
+                                                {{ $cartCount ?? 0 }}
+                                            </span></a>
                                     </li>
                                     <li><a class="dropdown-item" href="">Checkout</a></li>
                                 </ul>
@@ -118,11 +120,9 @@
         </div>
         <div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
         <ul>
-            <li class="menu_item"><a href="#">home</a></li>
-            <li class="menu_item"><a href="about.html">about us</a></li>
-            <li class="menu_item"><a href="offers.html">offers</a></li>
-            <li class="menu_item"><a href="blog.html">news</a></li>
-            <li class="menu_item"><a href="contact.html">contact</a></li>
+            <li class="menu_item"><a href="{{ route('home') }}">beranda</a></li>
+            <li class="menu_item"><a href="{{ route('penawaran') }}">penawaran</a></li>
+            <li class="menu_item"><a href="contact.html">kontak</a></li>
         </ul>
     </div>
 </div>

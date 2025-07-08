@@ -9,6 +9,7 @@ use App\Models\Pembayaran;
 use App\Models\Pemesanan;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class PemesananController extends Controller
@@ -135,5 +136,35 @@ class PemesananController extends Controller
 
             return redirect()->back()->with('error', 'Gagal menghapus pesanan: '.$e->getMessage());
         }
+    }
+
+
+    public function storeCart(Request $request)
+    {
+        $request->validate([
+            'id_paket' => 'required|exists:paket_wisata,id',
+        ]);
+
+        // Cek apakah user sudah pernah memasukkan paket ini ke keranjang (belum dibayar)
+        $sudahAda = Pemesanan::where('id_user', Auth::id())
+            ->where('id_paket', $request->id_paket)
+            ->where('status_pembayaran', 'belum')
+            ->exists();
+
+        if ($sudahAda) {
+            return redirect()->back()->with('error', 'Paket ini sudah ada di keranjang Anda.');
+        }
+
+        // Simpan ke tabel `pemesanan`
+        Pemesanan::create([
+            'id_user' => Auth::id(),
+            'id_paket' => $request->id_paket,
+            'jumlah_peserta' => 1,
+            'id_layanan' => null,
+            'total_harga' => 0,
+            'status_pembayaran' => 'belum',
+        ]);
+
+        return redirect()->back()->with('success', 'Paket dimasukkan ke keranjang.');
     }
 }

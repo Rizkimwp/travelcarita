@@ -24,33 +24,53 @@ class PaketWisata extends Model
         });
     }
 
+    public function pemesanan()
+    {
+        return $this->hasMany(Pemesanan::class, 'id_paket');
+    }
+
     public function galeri()
     {
         return $this->hasMany(GaleriPaket::class, 'id_paket');
     }
+
     public function jadwal()
     {
         return $this->hasMany(Jadwal::class, 'id_paket');
     }
+
     public function itinerari()
     {
         return $this->hasMany(Itinerari::class, 'id_paket');
     }
+
     public function fasilitasPaket()
     {
         return $this->hasMany(FasilitasPaket::class, 'id_paket');
     }
+
     public function faqs()
     {
         return $this->hasMany(Faqs::class, 'id_paket');
     }
+
     public function jenisPaket()
     {
         return $this->belongsTo(JenisPaket::class, 'id_jenis_paket');
     }
+
     public function maps()
     {
         return $this->hasMany(Maps::class, 'id_paket');
     }
 
+    public function testimonis()
+    {
+        return $this->hasMany(Testimoni::class, 'id_paket');
+    }
+
+    public function averageRating()
+    {
+        return $this->testimonis()->avg('rating');
+    }
 }

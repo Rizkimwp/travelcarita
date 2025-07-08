@@ -16,7 +16,16 @@ Route::get('/signin', [AuthController::class, 'index'])->name('login');
 Route::post('/signin', [AuthController::class, 'login'])->name('signin');
 Route::post('/registrasi', [AuthController::class, 'registrasi'])->name('registrasi');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/', [CompanyProfileController::class, 'index'])->name('home');
+
+Route::get('/', [CompanyProfileController::class, 'home'])->name('home');
+
+Route::middleware(['role:user'])->group(function () {
+Route::get('/penawaran', [CompanyProfileController::class, 'offer'])->name('penawaran');
+Route::get('/penawaran/{id}', [CompanyProfileController::class, 'showOffer'])->name('penawaran.show');
+Route::post('/masuk-keranjang', [PemesananController::class, 'storeCart'])->name('keranjang.store');
+// Masukan Keranjang
+
+});
 
 Route::middleware(['role:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -38,7 +47,7 @@ Route::middleware(['role:admin'])->group(function () {
     Route::delete('/paket-wisata/{id}', [PaketWisataController::class, 'destroy'])->name('paketwisata.destroy');
     Route::get('/paket-wisata/{id}', [PaketWisataController::class, 'edit'])->name('paketwisata.edit');
     Route::get('/paket-wisata/{id}/show', [PaketWisataController::class, 'show'])->name('paketwisata.show');
-    
+
     Route::get('/jenis-wisata', [JenisWisataController::class, 'index'])->name('jeniswisata.index');
     Route::post('/jenis-wisata', [JenisWisataController::class, 'store'])->name('jeniswisata.store');
     Route::put('/jenis-wisata/{id}', [JenisWisataController::class, 'update'])->name('jeniswisata.update');

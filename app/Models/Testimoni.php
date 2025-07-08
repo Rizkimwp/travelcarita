@@ -1,15 +1,16 @@
 <?php
 
 namespace App\Models;
-use Illuminate\Support\Str;
+
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Testimoni extends Model
 {
     //
     protected $table = 'testimoni';
 
-    protected $fillable = ['id_user', 'id_paket', 'rating', 'komentar',];
+    protected $fillable = ['id_user', 'id_paket', 'rating', 'komentar'];
 
     public $incrementing = false;
 
@@ -21,5 +22,15 @@ class Testimoni extends Model
         static::creating(function ($model) {
             $model->id = (string) Str::uuid();
         });
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
+    public function paketWisata()
+    {
+        return $this->belongsTo(PaketWisata::class, 'id_paket');
     }
 }
